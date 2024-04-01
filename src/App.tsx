@@ -1,23 +1,44 @@
-import React, { Suspense } from 'react';
-import './App.css';
-import Spinner from './components/Spinner/Spinner';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { GlobalProvider } from './components/GlobalContext';
+import { useEffect } from 'react';
+import { useRoutes } from 'react-router-dom';
+import router from 'src/router';
 
-const DefaultLayout = React.lazy(() => import("./layout/DefaultLayout"));
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+
+import { CssBaseline } from '@mui/material';
+import ThemeProvider from './theme/ThemeProvider';
+import { useContext } from 'react';
+import { LoadingContext } from './contexts/LoadingContext';
+import SuspenseLoader from './components/SuspenseLoader';
+import { UserContext } from './contexts/UserContext';
+import { LanguageContext } from './contexts/LanguageContext';
+import { DictionaryContext } from './contexts/DictionaryContext';
 
 function App() {
+  const content = useRoutes(router);
+  const { isLoading, loadingMessage } = useContext(LoadingContext);
+  // const { autoLogin } = useContext(UserContext);
+  // const { loadLanguage } = useContext(LanguageContext);
+  // const { loadDictionary } = useContext(DictionaryContext);
+  // const { username } = useContext(UserContext);
+
+  // useEffect(()=>{
+  //   if ( username ) {
+  //     loadLanguage();
+  //     loadDictionary();
+  //   }
+  // }, [username])
+
   return (
-    <BrowserRouter>
-      <GlobalProvider>
-        <Suspense fallback={<Spinner />}>
-          <Routes>
-            <Route path="*" id="Home" element={<DefaultLayout />} />
-          </Routes>
-        </Suspense>
-      </GlobalProvider>
-    </BrowserRouter>
+    <ThemeProvider>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <CssBaseline />
+        {content}
+        {
+          isLoading && <SuspenseLoader message={loadingMessage}/>
+        }
+      </LocalizationProvider>
+    </ThemeProvider>
   );
 }
-
 export default App;

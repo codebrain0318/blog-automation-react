@@ -1,1 +1,5 @@
-/build
+# .estlintignore file
+dist
+build
+node_modules/
+server.js

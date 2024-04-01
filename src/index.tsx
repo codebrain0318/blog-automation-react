@@ -1,27 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import ReactDOM from 'react-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter } from 'react-router-dom';
 
-const theme = createTheme({
+import 'nprogress/nprogress.css';
+import App from 'src/App';
+import { SidebarProvider } from 'src/contexts/SidebarContext';
+import * as serviceWorker from 'src/serviceWorker';
+import { LoadingProvider } from './contexts/LoadingContext';
+import { LanguageProvider } from './contexts/LanguageContext';
+import { DictionaryProvider } from './contexts/DictionaryContext';
+import { UserProvider } from './contexts/UserContext';
+import { BlogProvider } from './contexts/BlogContext';
 
-});
-
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+ReactDOM.render(
+  <HelmetProvider>
+    <LoadingProvider>
+      <UserProvider>
+        <SidebarProvider>
+          <LanguageProvider>
+            <DictionaryProvider>
+              <BlogProvider>
+                <BrowserRouter>
+                  <App />
+                </BrowserRouter>
+              </BlogProvider>
+            </DictionaryProvider>
+          </LanguageProvider>
+        </SidebarProvider>
+      </UserProvider>
+    </LoadingProvider>
+  </HelmetProvider>,
+  document.getElementById('root')
 );
 
-root.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+serviceWorker.unregister();
