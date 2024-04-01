@@ -123,7 +123,7 @@ function SimpleDialog(props) {
                 background: "white",
                 padding: "5px"
               }}
-              id="outlined-adornment-amount"
+              id="outlined-adornment-amount9"
               placeholder='URL'
               value={url}
               onChange={(e) => setUrl(e.target.value)}
@@ -134,7 +134,7 @@ function SimpleDialog(props) {
                 background: "white",
                 padding: "5px"
               }}
-              id="outlined-adornment-amount"
+              id="outlined-adornment-amount10"
               placeholder='Username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -145,7 +145,7 @@ function SimpleDialog(props) {
                 background: "white",
                 padding: "5px"
               }}
-              id="outlined-adornment-amount"
+              id="outlined-adornment-amount11"
               placeholder='Password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}

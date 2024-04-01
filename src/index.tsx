@@ -11,24 +11,27 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import { DictionaryProvider } from './contexts/DictionaryContext';
 import { UserProvider } from './contexts/UserContext';
 import { BlogProvider } from './contexts/BlogContext';
+import { LoggingProvider } from './contexts/LoggingContext';
 
 ReactDOM.render(
   <HelmetProvider>
-    <LoadingProvider>
-      <UserProvider>
-        <SidebarProvider>
-          <LanguageProvider>
-            <DictionaryProvider>
-              <BlogProvider>
-                <BrowserRouter>
-                  <App />
-                </BrowserRouter>
-              </BlogProvider>
-            </DictionaryProvider>
-          </LanguageProvider>
-        </SidebarProvider>
-      </UserProvider>
-    </LoadingProvider>
+    <LoggingProvider>
+      <LoadingProvider>
+        <UserProvider>
+          <SidebarProvider>
+            <LanguageProvider>
+              <DictionaryProvider>
+                <BlogProvider>
+                  <BrowserRouter>
+                    <App />
+                  </BrowserRouter>
+                </BlogProvider>
+              </DictionaryProvider>
+            </LanguageProvider>
+          </SidebarProvider>
+        </UserProvider>
+      </LoadingProvider>
+    </LoggingProvider>
   </HelmetProvider>,
   document.getElementById('root')
 );

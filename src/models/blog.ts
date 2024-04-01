@@ -13,6 +13,7 @@ export interface BlogType {
 
 export interface BlogStatusType {
   language: string;
+  url: string;
   targetId: string;
   sent: boolean;
 }

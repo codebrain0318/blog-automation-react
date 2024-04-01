@@ -22,7 +22,7 @@ import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
 import AccountBoxTwoToneIcon from '@mui/icons-material/AccountBoxTwoTone';
 import LockOpenTwoToneIcon from '@mui/icons-material/LockOpenTwoTone';
 import AccountTreeTwoToneIcon from '@mui/icons-material/AccountTreeTwoTone';
-import { Language, Person, Translate, Widgets } from '@mui/icons-material';
+import { History, Language, Person, Translate, Widgets } from '@mui/icons-material';
 import { UserContext } from 'src/contexts/UserContext';
 
 const UserBoxButton = styled(Button)(
@@ -148,12 +148,20 @@ function HeaderUserbox() {
             <Translate />
             <ListItemText primary="Dictionary" />
           </ListItem>
+          <ListItem
+            button
+            to="/management/logging"
+            component={NavLink}
+          >
+            <History />
+            <ListItemText primary="Logging" />
+          </ListItem>
         </List>
         <Divider />
         <Box sx={{ m: 1 }}>
-          <Button 
-          onClick={handleSignOut}
-          color="primary" fullWidth>
+          <Button
+            onClick={handleSignOut}
+            color="primary" fullWidth>
             <LockOpenTwoToneIcon sx={{ mr: 1 }} />
             Sign out
           </Button>

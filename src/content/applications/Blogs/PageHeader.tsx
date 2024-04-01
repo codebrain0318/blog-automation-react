@@ -1,4 +1,4 @@
-import { Typography, Button, Grid } from '@mui/material';
+import { Typography, Grid } from '@mui/material';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
 import { Search } from '@mui/icons-material';
@@ -6,10 +6,7 @@ import { useContext, useState } from 'react';
 import { BlogContext } from 'src/contexts/BlogContext';
 
 function PageHeader() {
-  const user = {
-    name: 'Catherine Pike',
-    avatar: '/static/images/avatars/1.jpg'
-  };
+  
   const { updateSearch } = useContext(BlogContext);
   const [_search, setSearch] = useState("");
 
@@ -32,7 +29,7 @@ function PageHeader() {
             "& fieldset": { border: 'none' },
             background: "white"
           }}
-          id="outlined-adornment-amount"
+          id="outlined-adornment-amount1"
           startAdornment={<InputAdornment position="start"><Search color='primary' /></InputAdornment>}
           placeholder='Search here'
           value={_search}

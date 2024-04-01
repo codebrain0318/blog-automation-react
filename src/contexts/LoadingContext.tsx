@@ -1,4 +1,5 @@
-import { FC, useState, createContext } from 'react';
+import { FC, useState, createContext, useContext } from 'react';
+import { LoggingContext } from './LoggingContext';
 type LoadingContext = {
   isLoading: boolean;
   loadingMessage: string;
@@ -14,7 +15,10 @@ export const LoadingContext = createContext<LoadingContext>(
 export const LoadingProvider: FC = ({ children }) => {
     const [isLoading, setLoading] = useState(false);
     const [loadingMessage, setLoadingMessage] = useState("");
+    const { addLog } = useContext(LoggingContext);
+    
     const startLoading = (message: string) => {
+        addLog(message);
         setLoadingMessage(message);
         setLoading(true);
     } 

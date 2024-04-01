@@ -31,6 +31,7 @@ export const LanguageProvider: FC = ({ children }) => {
                 setLanguages(responseData);
             }
         } catch (error) {
+            console.log(error);
         }
     }
 
@@ -46,6 +47,7 @@ export const LanguageProvider: FC = ({ children }) => {
                 ])
             }
         } catch (error) {
+            console.log(error);
 
         }
     }
@@ -62,6 +64,7 @@ export const LanguageProvider: FC = ({ children }) => {
             }
         } catch (error) {
 
+            console.log(error);
         }
     }
 
@@ -80,6 +83,7 @@ export const LanguageProvider: FC = ({ children }) => {
             }
         } catch (error) {
 
+            console.log(error);
         }
     }
 
@@ -100,6 +104,7 @@ export const LanguageProvider: FC = ({ children }) => {
             }
         } catch (error) {
 
+            console.log(error);
         }
     }
     return (

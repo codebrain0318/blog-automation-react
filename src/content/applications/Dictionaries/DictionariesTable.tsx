@@ -152,7 +152,7 @@ function SimpleDialog(props) {
                 background: "white",
                 padding: "5px"
               }}
-              id="outlined-adornment-amount"
+              id="outlined-adornment-amount2"
               placeholder='Bad Entry'
               value={badEntry}
               onChange={(e) => setBadEntry(e.target.value)}
@@ -163,7 +163,7 @@ function SimpleDialog(props) {
                 background: "white",
                 padding: "5px"
               }}
-              id="outlined-adornment-amount"
+              id="outlined-adornment-amount3"
               placeholder='Right Entry'
               value={rightEntry}
               onChange={(e) => setRightEntry(e.target.value)}

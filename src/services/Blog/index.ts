@@ -38,7 +38,7 @@ export const getAllBlogsService = async (username: string, password: string, pag
 
 export const getOneBlogService = async (username: string, password: string, id: string) => {
     try {
-        const url = `${config.sourceBlogUrl}/posts/${id}`;
+        const url = `${config.sourceBlogUrl}/posts/${id}?_embed`;
 
         const response = await fetch(url, {
             headers: {
@@ -58,10 +58,10 @@ export const getOneBlogService = async (username: string, password: string, id: 
                 media: "https://www.singlequiver.com/enelpico/wp-content/uploads/" + data["_embedded"]["wp:featuredmedia"][0]["media_details"]["file"],
                 number: 0
             };
-        }
-        return null;
+        } else 
+            return null;
     } catch (error) {
-        return null;
+        return error;
     }
 }
 
@@ -94,7 +94,6 @@ export const getBlogStatusService = async (postIds: string[]) => {
 
         if (response.ok) {
             const data = await response.json();
-            console.log(data);
             return data;
         }
         return null;
@@ -103,7 +102,7 @@ export const getBlogStatusService = async (postIds: string[]) => {
     }
 }
 
-export const translateBlogService = async (blog: BlogType, language: string) => {
+export const translateBlogService = async (blog: BlogType, language: string, ) => {
     try {
         const url = `${config.baseUrl}/translation/`;
         const data = {
@@ -145,11 +144,10 @@ export const sendBlogService = async (blog: BlogType, mediaId: number, language:
         });
         if (response.ok) {
             const data = await response.json();
-            console.log(data);
             return data;
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 
@@ -183,23 +181,23 @@ export const uploadFeaturedMediaService = async (mediaUrl: string, title: string
     }
 }
 
-export const sendBlogStatus = async (postId: string, language: string, targetId: string) => {
+export const sendBlogStatus = async (postId: string, language: string, targetId: string, url: string) => {
     try {
-        const url = `${config.baseUrl}/history/`;
-        const response = await fetch(url, {
+        const reqUrl = `${config.baseUrl}/history/`;
+        const response = await fetch(reqUrl, {
             method: 'POST',
             headers: {
                 'Content-type': "application/json"
             },
             body: JSON.stringify({
-                postId: postId,
-                language: language,
-                targetId: targetId
+                postId,
+                language,
+                targetId,
+                url
             })
         });
         if (response.ok) {
             const data = await response.json();
-            console.log(data);
             return data;
         }
     } catch (error) {
@@ -207,10 +205,10 @@ export const sendBlogStatus = async (postId: string, language: string, targetId:
     }
 }
 
-export const updateBlogStatus = async (statusId: string, postId: string, language: string, targetId: string) => {
+export const updateBlogStatus = async (statusId: string, postId: string, language: string, targetId: string, url: string) => {
     try {
-        const url = `${config.baseUrl}/history/${statusId}`;
-        const response = await fetch(url, {
+        const reqUrl = `${config.baseUrl}/history/${statusId}`;
+        const response = await fetch(reqUrl, {
             method: 'PUT',
             headers: {
                 'Content-type': "application/json"
@@ -218,22 +216,22 @@ export const updateBlogStatus = async (statusId: string, postId: string, languag
             body: JSON.stringify({
                 postId: postId,
                 language: language,
-                targetId: targetId
+                targetId: targetId,
+                url
             })
         });
         if (response.ok) {
             const data = await response.json();
-            console.log(data);
             return data;
         }
     } catch (error) {
         console.log(error)
     }
 }
-export const deleteBlogStatus = async (postId: string, language: string, targetId: string) => {
+export const deleteBlogStatus = async (postId: string, language: string, targetId: string, url: string) => {
     try {
-        const url = `${config.baseUrl}/history/?postId=${postId}&language=${language}&targetId=${targetId}`;
-        const response = await fetch(url, {
+        const reqUrl = `${config.baseUrl}/history/?postId=${postId}&language=${language}&targetId=${targetId}&url=${url}`;
+        const response = await fetch(reqUrl, {
             method: 'DELETE'
         });
         if (response.ok) {

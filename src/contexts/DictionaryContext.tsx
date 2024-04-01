@@ -30,6 +30,7 @@ export const DictionaryProvider: FC = ({ children }) => {
                 setDictionaries(responseData);
             }
         } catch (error) {
+            console.log(error);
         }
     }
 
@@ -46,6 +47,7 @@ export const DictionaryProvider: FC = ({ children }) => {
             }
         } catch (error) {
 
+            console.log(error);
         }
     }
 
@@ -61,6 +63,7 @@ export const DictionaryProvider: FC = ({ children }) => {
             }
         } catch (error) {
 
+            console.log(error);
         }
     }
 
@@ -79,6 +82,7 @@ export const DictionaryProvider: FC = ({ children }) => {
             }
         } catch (error) {
 
+            console.log(error);
         }
     }
 
@@ -99,6 +103,7 @@ export const DictionaryProvider: FC = ({ children }) => {
             }
         } catch (error) {
 
+            console.log(error);
         }
     }
     return (

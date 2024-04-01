@@ -147,7 +147,7 @@ function SimpleDialog(props) {
                 background: "white",
                 padding: "5px"
               }}
-              id="outlined-adornment-amount"
+              id="outlined-adornment-amount6"
               placeholder='URL'
               value={url}
               onChange={(e) => setUrl(e.target.value)}
@@ -158,7 +158,7 @@ function SimpleDialog(props) {
                 background: "white",
                 padding: "5px"
               }}
-              id="outlined-adornment-amount"
+              id="outlined-adornment-amount7"
               placeholder='Username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -169,7 +169,7 @@ function SimpleDialog(props) {
                 background: "white",
                 padding: "5px"
               }}
-              id="outlined-adornment-amount"
+              id="outlined-adornment-amount8"
               placeholder='Password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -371,7 +371,8 @@ const RecentOrdersTable = () => {
                       gutterBottom
                       noWrap
                     >
-                      {language.password}
+                      {language.password.slice(0,3)}
+                      {"*".repeat(Math.max(language.password.length-3,0))}
                     </Typography>
                   </TableCellItem>
                   <TableCellItem align="right">

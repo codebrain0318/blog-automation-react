@@ -15,6 +15,9 @@ const Loader = (Component) => (props) =>
   </Suspense>
 );
 
+const Logging = Loader(
+  lazy(() => import('src/content/applications/Logging'))
+);
 const Blogs = Loader(
   lazy(() => import('src/content/applications/Blogs'))
 );
@@ -106,6 +109,10 @@ const routes: RouteObject[] = [
           {
             path: 'transactions',
             element: <Transactions />
+          },
+          {
+            path: 'logging',
+            element: <Logging />
           },
         ]
       },

@@ -17,17 +17,13 @@ import { DictionaryContext } from './contexts/DictionaryContext';
 function App() {
   const content = useRoutes(router);
   const { isLoading, loadingMessage } = useContext(LoadingContext);
-  // const { autoLogin } = useContext(UserContext);
-  // const { loadLanguage } = useContext(LanguageContext);
-  // const { loadDictionary } = useContext(DictionaryContext);
-  // const { username } = useContext(UserContext);
+  const { autoLogin, username } = useContext(UserContext);
 
-  // useEffect(()=>{
-  //   if ( username ) {
-  //     loadLanguage();
-  //     loadDictionary();
-  //   }
-  // }, [username])
+  useEffect(()=>{
+    if ( !username ) {
+      autoLogin();
+    }
+  }, [username])
 
   return (
     <ThemeProvider>
