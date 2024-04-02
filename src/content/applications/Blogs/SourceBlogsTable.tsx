@@ -147,7 +147,17 @@ function SimpleDialog(props) {
           background:
             'linear-gradient(139deg, #0E8A74 23.19%, #26C58B 104.35%)',
           position: 'relative',
-          overflow: 'hidden'
+          overflowX: 'hidden',
+          overflowY: 'scroll',
+          '&::-webkit-scrollbar': {
+            width: '4px',
+          },
+          '&::-webkit-scrollbar-track': {
+            background: 'transparent',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            background: '#0E8A74',
+          }
         }}
       >
         <Box
